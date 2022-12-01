@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skill xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This skill defines the capability to help the customer in the initial steps of orboarding.</description>
+    <label>Initial Setup Support Skill</label>
+</Skill>
