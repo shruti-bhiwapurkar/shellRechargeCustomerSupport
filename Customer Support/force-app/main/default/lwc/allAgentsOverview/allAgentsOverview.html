@@ -1,0 +1,67 @@
+<template>
+    <lightning-card title="All Agents Overview" icon-name="standard:groups">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered " aria-labelledby="element-with-table-label other-element-with-table-label">
+            <thead>
+              <tr class="slds-line-height_reset">
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Agent">Agent</div>
+                </th>
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Status">Status</div>
+                </th>
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Capacity (in use)">Capacity (in use)</div>
+                </th>
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Assigned Cases">Assigned Cases</div>
+                </th>
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Configured Capacity">Configured Capacity</div>
+                </th>
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Assigned Queue">Assigned Queue</div>
+                </th>
+                <th class="" scope="col">
+                  <div class="slds-truncate" title="Skills">Skills</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+                <template for:each={allAgentsOverviewList} for:item="agent">
+                    <tr class="slds-hint-parent" key={agent.agentId}>
+                        <th data-label="Agent" scope="row">
+                            <div class="slds-truncate" title={agent.agentName} >
+                                <a data-agentrow={agent.agentId} onclick={handleAgentSelect}>{agent.agentName}</a>
+                            </div>
+                        </th>
+                        <td data-label="Status">
+                            <template if:true={agent.isActive}>
+                                <div class="activeCircle"></div> &nbsp;
+                            </template>
+                            <template if:false={agent.isActive}>
+                                <div class="inactiveCircle"></div> &nbsp;
+                            </template>
+                            {agent.status}
+                            <div class="slds-truncate" title={agent.status}>since  {agent.since}</div>
+                        </td>
+                        <td data-label="Capacity (in use)">
+                            <div class="slds-truncate" title={agent.capacity}>{agent.capacity}%</div>
+                        </td>
+                        <td data-label="Assigned Cases">
+                            <div class="slds-truncate" title={agent.assignedCases}>{agent.assignedCases}</div>
+                        </td>
+                        <td data-label="Configured Capacity">
+                            <div class="slds-truncate" title={agent.configuredCapacity}>{agent.configuredCapacity}</div>
+                        </td>
+                        <td data-label="Assigned Queue">
+                            <div class="slds-truncate" title={agent.assignedQueue}>{agent.assignedQueue}</div>
+                        </td>
+                        <td data-label="Skills" class="slds-truncate">
+                            <div class="slds-truncate" title={agent.skillsList}>{agent.skillsList}</div>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </lightning-card>
+</template>

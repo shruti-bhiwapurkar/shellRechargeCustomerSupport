@@ -1,0 +1,78 @@
+<template>
+  
+      <table class="slds-table slds-table_cell-buffer slds-table_bordered " aria-labelledby="element-with-table-label other-element-with-table-label">
+          <thead>
+            <tr class="slds-line-height_reset">
+              <th class="" scope="col">
+                <div class="slds-truncate" title="Case">Case</div>
+              </th>
+              <th class="" scope="col">
+                <div class="slds-truncate" title="Type">Type</div>
+              </th>
+              <th class="" scope="col">
+                <div class="slds-truncate" title="Status">Status</div>
+              </th>
+              <th class="" scope="col">
+                  <div class="slds-truncate" title="Reason">Reason</div>
+              </th>
+              <th class="" scope="col">
+                <div class="slds-truncate" title="Origin">Origin</div>
+              </th>
+              <th class="" scope="col">
+                <div class="slds-truncate" title="Subject">Subject</div>
+              </th>
+              <th class="" scope="col">
+                  <div class="slds-truncate" title="Priority">Priority</div>
+              </th>
+              <th class="" scope="col">
+                <div class="slds-truncate" title="CreatedDate">Created Date</div>
+              </th>
+              <th class="" scope="col">
+                <div class="slds-truncate" title="Close Date">Close Date</div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+              <template for:each={caseList} for:item="cs">
+                  <tr class="slds-hint-parent" key={cs.caseId}>
+                      <th data-label="Case" scope="row">
+                          <div class="slds-truncate" title={cs.caseNumber} >
+                              <a data-case-id={cs.caseId} onclick={handleCaseOpen}>{cs.caseNumber}</a>
+                          </div>
+                      </th>
+                      <td data-label="Type">
+                          <div class="slds-truncate" title={cs.type}>{cs.type}</div>
+                      </td>
+                      <td data-label="Status">
+                          <div class="slds-truncate" title={cs.status}>{cs.status}</div>
+                      </td>
+                      <td data-label="Reason">
+                          <div class="slds-truncate" title={cs.reason}>{cs.reason}</div>
+                      </td>
+                      <td data-label="Origin" class="slds-truncate">
+                          <div class="slds-truncate" title={cs.origin}>{cs.origin}</div>
+                      </td>
+                      <td data-label="Status">
+                          <div class="slds-truncate" title={cs.subject}>{cs.subject}</div>
+                      </td>
+                      <td data-label="Reason">
+                          <div class="slds-truncate" title={cs.priority}>{cs.priority}</div>
+                      </td>
+                      <td data-label="Origin" class="slds-truncate">
+                          <div class="slds-truncate" title={cs.createdDate}>{cs.createdDate}</div>
+                      </td>
+                      <td data-label="Origin" class="slds-truncate">
+                        <div class="slds-truncate" title={cs.closedDate}>{cs.closedDate}</div>
+                    </td>
+                  </tr>
+              </template>
+          </tbody>
+      </table>
+
+    <br/>
+    <div class="slds-no-print slds-align_absolute-center">
+      <lightning-button variant="brand" label="Generate PDF" onclick={generateCaseListPdf}></lightning-button>
+    </div> 
+    <br/>   
+    <br/>   
+</template>

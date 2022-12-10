@@ -1,0 +1,70 @@
+<template>
+
+    <div class="slds-grid slds-p-left_medium">
+        <div class="slds-col slds-size_2-of-6">
+            <lightning-combobox  name="agent" label="Agent" value={selectedAgentId} placeholder="Select Agent" 
+                options={agentList} onchange={onAgentChange} ></lightning-combobox>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <template if:true={isSummaryAvailable}>
+            <div class="slds-col slds-truncate slds-p-top_medium">
+                <template if:true={agentSummary.isActive}>
+                    <div class="activeCircle"></div> &nbsp;
+                </template>
+                <template if:false={agentSummary.isActive}>
+                    <div class="inactiveCircle"></div> &nbsp;
+                </template>
+                {agentSummary.status}
+                <div class="slds-truncate" title={agentSummary.status}>since  {agentSummary.since}</div>
+            </div>
+        </template>
+    </div>
+
+    <template if:true={isLoading}>
+        <lightning-spinner variant="brand" size="large"> </lightning-spinner>
+    </template>
+
+    <template if:true={isSummaryAvailable}>
+        <div class="slds-grid slds-gutters slds-truncate slds-scrollable_x slds-p-left_medium slds-p-top_large">            
+            <div class="slds-col slds-size_1-of-6">
+                <div class="slds-truncate" title={agentSummary.openCases}><b>Open Cases</b>
+                    <div class="slds-truncate" title={agentSummary.openCases}>{agentSummary.openCases}</div>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-6">
+                <div class="slds-truncate" title={agentSummary.closedCases}><b>Closed Cases</b>
+                    <div class="slds-truncate" title={agentSummary.closedCases}>{agentSummary.closedCases}</div>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-6">
+                <div class="slds-truncate" title={agentSummary.configuredCapacity}><b>Configured Capacity</b>
+                    <div class="slds-truncate" title={agentSummary.configuredCapacity}>{agentSummary.configuredCapacity}</div>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-6">
+                <div class="slds-truncate" title={agentSummary.assignedQueue}><b>Assigned Queue</b>
+                    <div class="slds-truncate" title={agentSummary.assignedQueue}>{agentSummary.assignedQueue}</div>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-6">
+                <div class="slds-truncate" title={agentSummary.skillsList}><b>Skills</b>
+                    <div class="slds-truncate" title={agentSummary.skillsList}>{agentSummary.skillsList}</div>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-6">
+                <div class="slds-truncate" title={agentSummary.avgTimeToCloseCase}><b>Average Time to Close the Case</b>
+                    <div class="slds-truncate" title={agentSummary.avgTimeToCloseCase}>{agentSummary.avgTimeToCloseCase} mins</div>
+                </div>
+            </div>
+        </div>
+
+        <lightning-tabset class="slds-scrollable_x">
+            <lightning-tab label="Open Cases" value="Open Cases">
+                <c-cases-table case-list={agentSummary.openCasesList}></c-cases-table>
+            </lightning-tab>
+            <lightning-tab label="Close Cases" value="Close Cases">
+                <c-cases-table case-list={agentSummary.closedCasesList}></c-cases-table>
+            </lightning-tab>
+        </lightning-tabset>
+    </template>
+</template>

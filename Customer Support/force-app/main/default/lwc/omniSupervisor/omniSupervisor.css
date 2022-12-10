@@ -1,0 +1,4 @@
+.omniContainer{
+    background-color: var(--lwc-colorBackground,rgb(255, 255, 255));
+    padding-left: var(--lwc-spacingXxSmall);
+}

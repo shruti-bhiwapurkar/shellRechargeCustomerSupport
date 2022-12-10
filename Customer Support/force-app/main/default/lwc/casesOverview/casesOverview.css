@@ -1,0 +1,5 @@
+.caseContainer{
+    padding-left: var(--lwc-spacingSmall);
+    padding-right: var(--lwc-spacingSmall);
+    padding-bottom: var(--lwc-spacingSmall);
+}

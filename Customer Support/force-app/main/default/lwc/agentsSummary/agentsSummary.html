@@ -1,0 +1,12 @@
+<template>
+    <div class="container">
+        <lightning-tabset>
+            <lightning-tab label="All Agents" value="All Agents">
+                <c-all-agents-overview onagentselect={onAgentSelect}></c-all-agents-overview>
+            </lightning-tab>
+            <lightning-tab label="Per Agent Summary" value="Per Agent Summary">
+                <c-per-agent-summary selected-agent={selectedAgent}> </c-per-agent-summary>
+            </lightning-tab>
+        </lightning-tabset>
+    </div>
+</template>

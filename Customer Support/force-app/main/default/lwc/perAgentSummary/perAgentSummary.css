@@ -1,0 +1,19 @@
+.slds-truncate{
+    white-space: break-spaces;
+}
+
+.activeCircle {
+    background: green;
+    border-radius: 50%;
+    height: 1em;
+    width: 1em;
+    display: inline-block;
+}
+
+.inactiveCircle {
+    background: orange;
+    border-radius: 50%;
+    height: 1em;
+    width: 1em;
+    display: inline-block;
+}

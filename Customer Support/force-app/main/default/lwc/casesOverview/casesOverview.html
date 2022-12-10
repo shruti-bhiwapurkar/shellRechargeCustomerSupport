@@ -1,0 +1,53 @@
+<template>
+
+    <template if:true={isLoading}>
+        <lightning-spinner variant="brand" size="large"> </lightning-spinner>
+    </template>
+
+    <div class="slds-no-print">
+        <lightning-card >
+            <div class="slds-grid slds-gutters caseContainer">
+                <div class="slds-col">
+                    <lightning-combobox name="status" label="Status" placeholder="Choose Value" value={selectedStatus} onchange={handlePicklistValueChange} options={statusPicklistValues}>
+                    </lightning-combobox>
+                </div>
+                <div class="slds-col">
+                    <lightning-combobox name="priority" label="Priority" placeholder="Choose Value" value={selectedPriority} onchange={handlePicklistValueChange} options={priorityPicklistValues}>
+                    </lightning-combobox>
+                </div>
+                <div class="slds-col">
+                    <lightning-combobox name="reason" label="Reason" placeholder="Choose Value" value={selectedReason} onchange={handlePicklistValueChange} options={reasonPicklistValues}>
+                    </lightning-combobox>
+                </div>
+                <div class="slds-col">
+                    <lightning-combobox name="type" label="Type" placeholder="Choose Value" value={selectedType} onchange={handlePicklistValueChange} options={typePicklistValues}>
+                    </lightning-combobox>
+                </div>
+            </div>
+            <br/>
+            <div class="slds-grid slds-gutters caseContainer">
+                <div class="slds-col">
+                    <lightning-combobox name="owner" label="Owner" placeholder="Choose Value" value={selectedCaseOwnerId} onchange={handlePicklistValueChange} options={caseOwnerValues}>
+                    </lightning-combobox>
+                </div>
+                <div class="slds-col">
+                    <lightning-combobox name="createdDate" label="Created Date" placeholder="Choose Value" value={createdDate} onchange={handlePicklistValueChange} options={createdDateValues}>
+                    </lightning-combobox>
+                </div>
+                <div class="slds-col">
+                    <lightning-combobox name="closedDate" label="Closed Date" placeholder="Choose Value" value={closedDate} onchange={handlePicklistValueChange} options={closedDateValues}>
+                    </lightning-combobox>
+                </div>
+            </div>
+
+            <div>
+                <lightning-button label="Search" title="Search" variant="brand" onclick={handleSearch} class="slds-align_absolute-center"></lightning-button>
+            </div>
+            <br/>
+        </lightning-card>
+    </div>
+    <br/>
+    <template if:true={showCaseResults}>
+        <c-cases-table case-list={casesList}></c-cases-table>
+    </template>
+</template>
